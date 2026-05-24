@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brad Kreit — Foresight Research & Strategy</title>
 <meta name="description" content="Brad Kreit is a Research Leader at Deloitte's Center for Integrated Research focused on the future of work, and a former decade-long researcher at Institute for the Future. Keynote speaker, foresight strategist, and published author.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%231a1714'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' font-weight='400' fill='%23b85c3a' text-anchor='middle'>BK</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -31,6 +32,51 @@
   .nav-links a:hover { color: var(--accent); }
   .nav-linkedin { display: flex; align-items: center; gap: .4rem; }
   .nav-linkedin svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* HAMBURGER */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: .4rem;
+    background: none;
+    border: none;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform .3s, opacity .3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px; left: 0; right: 0;
+    background: rgba(253,250,245,0.98);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 0;
+    z-index: 99;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none;
+    padding: .9rem 0;
+    border-bottom: 1px solid var(--rule);
+    transition: color .2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -180,6 +226,7 @@
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
+    .nav-toggle { display: flex; }
     .hero { grid-template-columns: 1fr; padding: 5rem 2rem 2rem; gap: 0; min-height: auto; }
     .hero-left { padding: 2rem 0 1.5rem 1.5rem; }
     .hero-left::before { top: 2rem; bottom: 1.5rem; }
@@ -219,17 +266,32 @@
       LinkedIn
     </a></li>
   </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#deloitte" class="mobile-link">Deloitte Research</a>
+  <a href="#expertise" class="mobile-link">Expertise</a>
+  <a href="#projects" class="mobile-link">IFTF Projects</a>
+  <a href="#talks" class="mobile-link">Talks</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://www.linkedin.com/in/bradkreit/" target="_blank" class="mobile-link">LinkedIn</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <p class="eyebrow">Foresight Research &amp; Strategy</p>
+    <p class="eyebrow">Research · Strategy · Speaking</p>
     <h1 class="hero-name">Brad<br>Kreit</h1>
-    <p class="hero-title">Research Leader &amp; Futurist</p>
+    <p class="hero-title">Futurist · Researcher · Speaker</p>
   </div>
   <div class="hero-right">
-    <p class="hero-bio">I am a Research Leader with Deloitte's Center for Integrated Research where I develop thought leadership on the future of work. I previously spent more than a decade with Institute for the Future leading major foresight projects in global trends, technology, health and food. I've delivered keynotes and facilitated workshops on five continents.</p>
+    <p class="hero-bio">I study how large-scale forces are reshaping the future of work — and help people think more clearly about what to do about it. As a researcher, speaker, and facilitator, I've spent the last 15 years turning complex long-range questions into insights that organizations can actually act on.</p>
     <div class="hero-ctas">
       <a class="btn btn-fill" href="#deloitte">View My Work</a>
       <a class="btn btn-outline" href="#contact">Get in Touch</a>
@@ -360,18 +422,18 @@
     </div>
     <div class="skill-card reveal">
       <div class="skill-num">02</div>
-      <div class="skill-title">Executive Communication</div>
-      <p class="skill-desc">Translating complex research into compelling narratives through articles, keynotes, and workshops. Experienced in multi-format delivery — from Deloitte Insights publications and Wall Street Journal features to in-person conference keynotes and visual research maps.</p>
+      <div class="skill-title">Keynotes &amp; Public Speaking</div>
+      <p class="skill-desc">Delivering keynotes and talks that translate complex, long-range research into ideas that stick — on stages ranging from intimate executive gatherings to large international conferences, across five continents.</p>
     </div>
     <div class="skill-card reveal">
       <div class="skill-num">03</div>
-      <div class="skill-title">Stakeholder Management</div>
-      <p class="skill-desc">Aligning diverse global teams and vendors to deliver complex, high-impact research projects. Orchestrating large-scale research campaigns and translating senior stakeholder goals into published insights that shape market conversations.</p>
+      <div class="skill-title">Workshop Facilitation</div>
+      <p class="skill-desc">Designing and running workshops that move groups beyond their current thinking — from strategy and visioning sessions to innovation sprints and futures methods trainings, helping teams develop their own foresight capabilities.</p>
     </div>
     <div class="skill-card reveal">
       <div class="skill-num">04</div>
-      <div class="skill-title">Group Facilitation</div>
-      <p class="skill-desc">Designing and running workshops that move groups beyond their current thinking — from strategy and visioning sessions to innovation sprints and futures methods trainings, with clients across industries around the world.</p>
+      <div class="skill-title">Research &amp; Executive Communication</div>
+      <p class="skill-desc">Leading large-scale research projects and translating findings into compelling narratives — from Deloitte Insights publications and Wall Street Journal features to visual research maps and in-person conference presentations.</p>
     </div>
   </div>
 </section>
@@ -505,7 +567,7 @@
     </div>
     <div class="contact-detail">
       <span class="contact-detail-label">Core Skills</span>
-      <span class="contact-detail-value">Strategic Foresight &amp; Horizon Scanning · Executive Communication · Stakeholder Management</span>
+      <span class="contact-detail-value">Strategic Foresight &amp; Horizon Scanning · Keynotes &amp; Facilitation · Research Leadership</span>
     </div>
     <div class="contact-detail">
       <span class="contact-detail-label">Speaking</span>
@@ -524,10 +586,25 @@
 </footer>
 
 <script>
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
 </script>
 
 </body>
